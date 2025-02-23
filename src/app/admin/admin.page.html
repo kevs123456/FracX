@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Panel de Administrador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Añadir Usuario</h2>
+  <ion-item>
+    <ion-label position="floating">Usuario</ion-label>
+    <ion-input [(ngModel)]="nuevoUsuario"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="nuevaPassword"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="crearUsuario()">Registrar</ion-button>
+
+  <h2>Lista de Usuarios</h2>
+  <ion-list>
+    <ion-item *ngFor="let usuario of usuarios">
+      <ion-label>{{ usuario.usuario }}</ion-label>
+      <ion-button (click)="editarUsuario(usuario)">Editar</ion-button>
+      <ion-button color="danger" (click)="eliminarUsuario(usuario._id)">Eliminar</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Formulario de edición -->
+  <div *ngIf="editandoUsuario">
+    <h2>Editar Usuario</h2>
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input [(ngModel)]="editandoUsuario.usuario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="editandoUsuario.password"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="guardarEdicion()">Guardar</ion-button>
+    <ion-button expand="full" color="medium" (click)="editandoUsuario = null">Cancelar</ion-button>
+  </div>
+
+  <h2>Control del Portón</h2>
+  <ion-button expand="full" (click)="modificarEstado('abierto')">Abrir Portón</ion-button>
+  <ion-button expand="full" (click)="modificarEstado('cerrado')">Cerrar Portón</ion-button>
+  <p>{{ estadoPorton }}</p>
+</ion-content>
