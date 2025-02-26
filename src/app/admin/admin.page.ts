@@ -28,7 +28,8 @@ export class AdminPage implements OnInit {
   cargarUsuarios() {
     this.apiService.listarUsuarios().subscribe(
       (response) => {
-        this.usuarios = response;
+        // Filtra los usuarios para excluir al admin
+        this.usuarios = response.filter((usuario: any) => usuario.rol !== 'admin');
       },
       (error) => {
         console.error('Error al cargar usuarios', error);

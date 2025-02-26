@@ -10,6 +10,11 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
+    // Método para hacer login
+    login(usuario: string, password: string): Observable<any> {
+      return this.http.post(`${this.apiUrl}/login`, { usuario, password });
+    }
+
   // Método para añadir usuarios
   crearUsuario(usuario: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/usuarios/crear`, { usuario, password });

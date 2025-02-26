@@ -1,18 +1,29 @@
 import { Routes } from '@angular/router';
 import { AdminPage } from './admin/admin.page';
+import { LoginPage } from './login/login.page';
+import { UsuarioPage } from './usuario/usuario.page';
+
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'admin',
+    redirectTo: 'login',
     pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: LoginPage,
   },
   {
     path: 'admin',
     component: AdminPage,
   },
   {
-    path: 'admin',
-    loadComponent: () => import('./admin/admin.page').then( m => m.AdminPage)
+    path: 'usuario',
+    component: UsuarioPage,
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
   },
 ];
