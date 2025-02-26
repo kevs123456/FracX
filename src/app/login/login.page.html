@@ -1,21 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Iniciar Sesión</ion-title>
+    <ion-title>FracX</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="login()">
-    <ion-item>
-      <ion-label position="floating">Usuario</ion-label>
-      <ion-input type="text" [(ngModel)]="usuario" name="usuario" required></ion-input>
-    </ion-item>
+  <div class="container">
+      <form (ngSubmit)="login()">
+        <div class="contenido">
+          <ion-icon name="person" id="icono"></ion-icon>
+          <ion-item>
+            <ion-label position="floating">Usuario</ion-label>
+            <ion-input type="text" [(ngModel)]="usuario" name="usuario" required></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+          </ion-item>
 
-    <ion-button expand="full" type="submit">Iniciar Sesión</ion-button>
-  </form>
+          <ion-button expand="full" type="submit">
+            <ion-icon name="arrow-forward" id="enviar"></ion-icon>
+          </ion-button>
+        </div>
+      </form>
+  </div>
 </ion-content>

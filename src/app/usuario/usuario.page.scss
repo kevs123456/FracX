@@ -1,0 +1,24 @@
+.header {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    justify-content: space-between; /* Distribuye los elementos */
+    width: 100%;
+    font-size: 200%;
+}
+
+.left-icon {
+    margin-right: 5px; /* Ajusta el espacio entre el icono y el texto */
+}
+
+#nombre {
+    display: flex;
+    align-items: center; /* Asegura que el texto esté alineado verticalmente */
+    flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+}
+
+.principal{
+    display:grid;
+    width: 100%;
+    height: 100%;
+    background-color: #74ccfc ;
+}

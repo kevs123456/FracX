@@ -1,23 +1,44 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Panel de Administrador</ion-title>
+    <div class="header">
+      <div class="titulo">
+        <ion-title> <ion-icon name="cog"></ion-icon> Panel de administrador</ion-title>
+      </div>
+      <div class="control">
+        <div class="botones">
+          <ion-button class="btn-abrir" expand="full" (click)="modificarEstado('abierto')">Abrir Portón</ion-button>
+          <ion-button class="btn-cerrar" expand="full" (click)="modificarEstado('cerrado')">Cerrar Portón</ion-button>
+        </div>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h2>Añadir Usuario</h2>
-  <ion-item>
-    <ion-label position="floating">Usuario</ion-label>
-    <ion-input [(ngModel)]="nuevoUsuario"></ion-input>
-  </ion-item>
+  <div class="principal">
+    <!-- Sección de Añadir Usuario -->
+    <div class="anadir-usuarios">
+      <h2>Añadir Usuario</h2>
+      <ion-item>
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input [(ngModel)]="nuevoUsuario" placeholder="Ingrese el usuario a registrar"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="nuevaPassword" placeholder="Ingrese la contraseña"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Contraseña</ion-label>
-    <ion-input type="password" [(ngModel)]="nuevaPassword"></ion-input>
-  </ion-item>
+      <ion-button expand="full" (click)="crearUsuario()" id="btn-registrar">Registrar</ion-button>
+    </div>
 
-  <ion-button expand="full" (click)="crearUsuario()">Registrar</ion-button>
-
+    <!-- Sección de Registros -->
+    <div class="registros">
+      <div class="reg-entrada">Entrada</div>
+      <div class="reg-salida">Salida</div>
+    </div>
+  </div>
+<div class="usuarios">
   <h2>Lista de Usuarios</h2>
   <ion-list>
     <ion-item *ngFor="let usuario of usuarios">
@@ -43,9 +64,5 @@
     <ion-button expand="full" (click)="guardarEdicion()">Guardar</ion-button>
     <ion-button expand="full" color="medium" (click)="editandoUsuario = null">Cancelar</ion-button>
   </div>
-
-  <h2>Control del Portón</h2>
-  <ion-button expand="full" (click)="modificarEstado('abierto')">Abrir Portón</ion-button>
-  <ion-button expand="full" (click)="modificarEstado('cerrado')">Cerrar Portón</ion-button>
-  <p>{{ estadoPorton }}</p>
+</div>
 </ion-content>

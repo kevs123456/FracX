@@ -1,0 +1,152 @@
+/* Asegurando que los campos y etiquetas tengan el fondo adecuado */
+ion-content,
+.principal,
+.usuarios {
+    background-color: #ffffff;
+}
+
+.usuarios {
+    width: 100%;
+    height: 100%;
+    color: black;
+}
+
+.principal,
+.usuarios,
+.reg-entrada,
+.reg-salida {
+    color: black;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "titulo control";
+    align-items: center;
+}
+
+.titulo {
+    grid-area: titulo;
+}
+
+.control {
+    grid-area: control;
+}
+
+.botones {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "btn-abrir btn-cerrar";
+    align-items: center;
+}
+
+.btn-abrir {
+    grid-area: btn-abrir;
+}
+
+.btn-cerrar {
+    grid-area: btn-cerrar;
+}
+
+.principal {
+    display: grid;
+    grid-template-columns: 40% 60%; /* Ajusta el tamaño de las columnas */
+    grid-template-areas: "usuarios registros"; /* Coloca usuarios y registros en la misma fila */
+    gap: 15px; /* Espacio entre columnas */
+    align-items: start;
+    padding: 10px;
+}
+
+.usuarios {
+    grid-area: usuarios;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.registros {
+    grid-area: registros;
+    background-color: transparent;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.reg-entrada {
+    background-color: #64c4fc;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.reg-salida {
+    background-color: #64c4fc;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    width: 100%;
+}
+
+ion-button#btn-registrar,
+.btn-abrir,
+.btn-cerrar {
+    --background: #64c4fc; /* Cambiar el color de fondo */
+    --color: black; /* Cambiar el color del texto */
+}
+
+ion-item {
+    --background: white !important; /* Asegura que el fondo de ion-item sea blanco */
+}
+
+ion-input {
+    --background: white !important; /* Asegura que el fondo del input sea blanco */
+    --color: black !important; /* Asegura que el texto sea negro */
+    border: 1px solid #ccc; /* Añadir borde para mejor visualización */
+}
+
+/* Asegura que el texto flotante (placeholder) sea visible */
+ion-input::part(native) {
+    background-color: white !important; /* Asegura que el fondo del campo de entrada sea blanco */
+    color: black !important; /* Asegura que el texto sea negro */
+}
+
+ion-label {
+    --color: black !important; /* Asegura que el texto de las etiquetas sea negro */
+    color: #000 !important; /* Asegura que las etiquetas sean visibles */
+    font-size: 14px; /* Ajuste del tamaño de la fuente para las etiquetas */
+}
+
+/* Asegura que el texto de las etiquetas dentro del campo (floating) sea visible */
+ion-label {
+    font-size: 14px;
+    color: #000 !important; /* Asegura que las etiquetas sean visibles */
+    
+}
+
+/* Placeholder de los inputs */
+ion-input input::placeholder {
+    color: #a0a0a0 !important; /* Color del placeholder */
+}
+
+/* Asegura que el texto de las etiquetas flotantes (cuando el input está vacío) sea visible */
+ion-item {
+    --label-color: black !important; /* Cambiar color de las etiquetas flotantes */
+}
+
+@media (max-width: 600px) {
+    .principal {
+        grid-template-columns: 100%;
+        grid-template-areas: "usuarios" "registros"; /* Apila los elementos en pantallas pequeñas */
+    }
+
+    .titulo ion-title {
+        font-size: 16px;
+    }
+}

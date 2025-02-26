@@ -1,0 +1,64 @@
+ion-content {
+    --overflow: hidden; /* Evita el scroll innecesario */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh; /* Ocupar toda la pantalla */
+    background-color: rgb(0, 0, 0);
+    overflow: hidden; /* Asegura que no haya desbordamiento */
+}
+
+
+
+.contenido {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px; /* Espacio entre elementos */
+}
+
+ion-item {
+    width: 100%;
+}
+
+ion-button {
+    margin-top: 15px;
+    width: 30%;
+    margin-left: 80%;
+    --background: #000000; /* Cambia el color de fondo */
+    --color: white; /* Cambia el color del texto/ícono */
+}
+
+
+ion-item{
+    border-radius: 30px;
+}
+
+#icono {
+    font-size: 80px; /* Aumenta el tamaño del icono */
+    color: white; /* Ajusta el color si lo necesitas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+    margin-bottom: 10px; /* Espacio debajo del icono */
+}
+
+ion-button:hover ion-icon {
+    color: #64c4fc 
+    ;
+}
+
+
+
+
+
+

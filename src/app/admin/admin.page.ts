@@ -15,7 +15,7 @@ export class AdminPage implements OnInit {
   nuevoUsuario: string = '';
   nuevaPassword: string = '';
   usuarios: any[] = [];
-  estadoPorton: string = 'Desconocido';
+  estadoPorton: string = 'Estado del porton desconocido';
   editandoUsuario: any = null;
 
   constructor(private apiService: ApiService) {}
