@@ -2,9 +2,9 @@
   <ion-toolbar>
     <div class="header">
       <ion-icon name="person" class="left-icon"></ion-icon>
-      <p id="nombre">{{ nombreUsuario }}</p>  <!-- Mostrar el nombre del usuario aquí -->
+      <p id="nombre">{{ nombreUsuario }}</p>
       <ion-button fill="clear" class="right-icon" (click)="logout()">
-        <ion-icon name="exit"></ion-icon>
+        <ion-icon name="exit" class="iconos"></ion-icon>
       </ion-button>
     </div>
   </ion-toolbar>
@@ -12,6 +12,21 @@
 
 <ion-content>
   <div class="principal">
-    <!-- Contenido principal -->
+    <div class="generador">
+      <h1 class="gen">Tus códigos de acceso:</h1>
+      <ion-icon name="add-circle" id="agregar" (click)="generarCodigo()"></ion-icon>
+    </div>
+    <ion-list>
+      <ion-item-sliding *ngFor="let codigo of codigos">
+        <ion-item>
+          <ion-label>{{ codigo.codigo }}</ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="eliminarCodigo(codigo._id)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
   </div>
 </ion-content>

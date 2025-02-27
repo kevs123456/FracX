@@ -43,4 +43,19 @@ export class ApiService {
   modificarEstado(estado: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/modificarEstado`, { estado });
   }
+
+  agregarCodigo(userId: string, codigo: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/codigos/agregar`, { userId, codigo });
+  }
+
+  // Método para obtener los códigos de un usuario
+  obtenerCodigos(userId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/codigos/${userId}`);
+  }
+
+  eliminarCodigo(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/codigos/eliminar/${id}`);
+  }
+
+  
 }
