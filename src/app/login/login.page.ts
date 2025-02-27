@@ -27,6 +27,9 @@ export class LoginPage {
     this.apiService.login(this.usuario, this.password).subscribe(
       (response) => {
         if (response.success) {
+          localStorage.setItem('userId', response.id); // Guardar ID
+          localStorage.setItem('nombreUsuario', response.usuario); // Guardar nombre
+  
           // Redirige según el rol del usuario
           if (response.rol === 'admin') {
             this.router.navigate(['/admin']);
@@ -42,6 +45,7 @@ export class LoginPage {
       }
     );
   }
+  
 
   // Método para mostrar alertas
   async mostrarAlerta(titulo: string, mensaje: string) {

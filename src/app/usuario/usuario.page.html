@@ -2,13 +2,16 @@
   <ion-toolbar>
     <div class="header">
       <ion-icon name="person" class="left-icon"></ion-icon>
-      <p id="nombre">Kevin Aparicio</p>
-      <ion-icon name="exit" class="right-icon"></ion-icon>
+      <p id="nombre">{{ nombreUsuario }}</p>  <!-- Mostrar el nombre del usuario aquí -->
+      <ion-button fill="clear" class="right-icon" (click)="logout()">
+        <ion-icon name="exit"></ion-icon>
+      </ion-button>
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<div class="principal"></div>
-
+  <div class="principal">
+    <!-- Contenido principal -->
+  </div>
 </ion-content>

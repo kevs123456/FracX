@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-admin',
@@ -15,10 +16,16 @@ export class AdminPage implements OnInit {
   nuevoUsuario: string = '';
   nuevaPassword: string = '';
   usuarios: any[] = [];
-  estadoPorton: string = 'Estado del porton desconocido';
+  estadoPorton: string = 'Estado del porton: Cerrado';
   editandoUsuario: any = null;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {} // Inyectar ambos en un solo constructor
+
+  
+
+  logout() {
+    this.router.navigate(['/login']); // Redirige al login
+  }
 
   ngOnInit() {
     this.cargarUsuarios();
@@ -75,25 +82,45 @@ export class AdminPage implements OnInit {
   eliminarUsuario(id: string) {
     if (confirm('¿Estás seguro de eliminar este usuario?')) {
       this.apiService.eliminarUsuario(id).subscribe(
-        (response) => {
+        () => { // No intentamos acceder a response porque 204 no devuelve nada
           alert('Usuario eliminado exitosamente');
-          this.cargarUsuarios(); // Recargar la lista de usuarios
+          this.cargarUsuarios(); // Recargar la lista después de eliminar
         },
         (error) => {
+          console.error('Error al eliminar usuario', error);
           alert('Error al eliminar usuario');
         }
       );
     }
   }
+  
 
   // Modificar el estado del portón
-  modificarEstado(estado: string) {
-    this.apiService.modificarEstado(estado).subscribe(
-      (response) => {
-        this.estadoPorton = `Estado: ${estado}`;
+  abrirPorton() {
+    this.estadoPorton = 'abriendo...'; // Actualizar UI
+    this.apiService.modificarEstado('abierto').subscribe(
+      () => {
+        this.estadoPorton = 'abierto';
+        setTimeout(() => {
+          this.cerrarPorton(); // Cerrar automáticamente después de 20 segundos
+        }, 20000);
       },
       (error) => {
-        alert('Error al modificar el estado');
+        alert('Error al abrir el portón');
+        this.estadoPorton = 'cerrado';
+      }
+    );
+  }
+
+  cerrarPorton() {
+    this.estadoPorton = 'cerrando...'; // Actualizar UI
+    this.apiService.modificarEstado('cerrado').subscribe(
+      () => {
+        this.estadoPorton = 'cerrado';
+      },
+      (error) => {
+        alert('Error al cerrar el portón');
+        this.estadoPorton = 'abierto'; // Si hay error, mantener estado abierto
       }
     );
   }

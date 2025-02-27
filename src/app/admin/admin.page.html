@@ -2,12 +2,12 @@
   <ion-toolbar>
     <div class="header">
       <div class="titulo">
-        <ion-title> <ion-icon name="cog"></ion-icon> Panel de administrador</ion-title>
+        <ion-title> <ion-icon name="cog" class="cog"></ion-icon> Panel de administrador</ion-title>
       </div>
       <div class="control">
         <div class="botones">
-          <ion-button class="btn-abrir" expand="full" (click)="modificarEstado('abierto')">Abrir Portón</ion-button>
-          <ion-button class="btn-cerrar" expand="full" (click)="modificarEstado('cerrado')">Cerrar Portón</ion-button>
+          <ion-button class="btn-abrir" expand="full" (click)="abrirPorton()">Abrir Portón</ion-button>
+          <ion-button fill="clear" class="exit" (click)="logout()"><ion-icon name="exit"></ion-icon></ion-button>
         </div>
       </div>
     </div>

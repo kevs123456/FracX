@@ -18,6 +18,7 @@ ion-content,
     color: black;
 }
 
+/* Estilos para el header */
 .header {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -27,6 +28,8 @@ ion-content,
 
 .titulo {
     grid-area: titulo;
+    display: flex;
+    align-items: center; /* Alinea verticalmente el ícono y el texto */
 }
 
 .control {
@@ -35,17 +38,21 @@ ion-content,
 
 .botones {
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-areas: "btn-abrir btn-cerrar";
+    grid-template-columns: 40% 20%;
+    grid-template-areas: "btn-abrir exit";
     align-items: center;
+    justify-content: end;
+    justify-items: end;
 }
 
 .btn-abrir {
     grid-area: btn-abrir;
 }
 
-.btn-cerrar {
-    grid-area: btn-cerrar;
+.exit {
+    grid-area: exit;
+    font-size: 200%;
+    margin-left: 10px; /* Corregido: margin-left: 10x; */
 }
 
 .principal {
@@ -127,7 +134,6 @@ ion-label {
 ion-label {
     font-size: 14px;
     color: #000 !important; /* Asegura que las etiquetas sean visibles */
-    
 }
 
 /* Placeholder de los inputs */
@@ -140,7 +146,28 @@ ion-item {
     --label-color: black !important; /* Cambiar color de las etiquetas flotantes */
 }
 
-@media (max-width: 600px) {
+ion-button#btn-registrar:hover {
+    --background: #3c748c;
+}
+
+ion-button:hover {
+    --background: #3c748c;
+}
+
+.cog {
+    font-size: 36px; /* Tamaño del ícono */
+    vertical-align: middle; /* Alinea el ícono verticalmente con el texto */
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
+
+ion-title {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el ícono y el texto */
+    gap: 8px; /* Espacio entre el ícono y el texto */
+    line-height: 36px; /* Ajusta este valor según el tamaño del ícono */
+}
+
+@media (max-width: 800px) {
     .principal {
         grid-template-columns: 100%;
         grid-template-areas: "usuarios" "registros"; /* Apila los elementos en pantallas pequeñas */
@@ -148,5 +175,11 @@ ion-item {
 
     .titulo ion-title {
         font-size: 16px;
+    }
+
+    .exit {
+        font-size: 125%;
+        margin-left: 50px;
+        margin-right: 0;
     }
 }
