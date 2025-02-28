@@ -17,10 +17,10 @@
 <ion-content>
   <div class="principal">
     <!-- Sección de Añadir Usuario -->
-    <div class="anadir-usuarios">
-      <h2>Añadir Usuario</h2>
+    <div class="usuarios">
+      <h2 class="titulo-con-icono">Añadir Usuario <ion-icon name="person-add" class="iconos-registros"></ion-icon></h2>
       <ion-item>
-        <ion-label position="floating">Usuario</ion-label>
+        <ion-label position="floating">Usuario </ion-label>
         <ion-input [(ngModel)]="nuevoUsuario" placeholder="Ingrese el usuario a registrar (Nombre-numero de casa)"></ion-input>
     </ion-item>
     
@@ -29,22 +29,42 @@
         <ion-input type="password" [(ngModel)]="nuevaPassword" placeholder="Ingrese la contraseña"></ion-input>
     </ion-item>
 
-      <ion-button expand="full" (click)="crearUsuario()" id="btn-registrar">Registrar</ion-button>
+      <ion-button expand="full" (click)="crearUsuario()" id="btn-registrar">Registrar usuario</ion-button>
     </div>
 
-    <!-- Sección de Registros -->
-    <div class="registros">
-      <div class="reg-entrada">Entrada</div>
-      <div class="reg-salida">Salida</div>
+    <!-- Añadir placas  -->
+    <div class="placas">
+      <h2 class="titulo-con-icono">
+        Añadir placas
+        <ion-icon name="car" class="iconos-registros"></ion-icon>
+      </h2>
+      <ion-item>
+        <ion-label position="floating">Placas</ion-label>
+        <ion-input [(ngModel)]="nuevoUsuario" placeholder="Ingrese las placas del vehiculos "></ion-input>
+    </ion-item>
+    
+    <ion-item>
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input type="password" [(ngModel)]="nuevaPassword" placeholder="Ingrese el usuario propietario de las placas"></ion-input>
+    </ion-item>
+
+      <ion-button expand="full" (click)="crearUsuario()" id="btn-registrar">Registrar placas</ion-button>
     </div>
+
   </div>
-<div class="usuarios">
+
+  <!-- Sección de Registros -->
+  <div class="registros">
+    <div class="reg-entrada">Entrada</div>
+    <div class="reg-salida">Salida</div>
+  </div>
+<div class="lista-usuarios">
   <h2>Lista de Usuarios</h2>
   <ion-list>
     <ion-item *ngFor="let usuario of usuarios">
       <ion-label>{{ usuario.usuario }}</ion-label>
-      <ion-button (click)="editarUsuario(usuario)">Editar</ion-button>
-      <ion-button color="danger" (click)="eliminarUsuario(usuario._id)">Eliminar</ion-button>
+      <ion-button (click)="editarUsuario(usuario)"><ion-icon name="create"></ion-icon></ion-button>
+      <ion-button color="danger" (click)="eliminarUsuario(usuario._id)"><ion-icon name="trash"></ion-icon></ion-button>
     </ion-item>
   </ion-list>
 

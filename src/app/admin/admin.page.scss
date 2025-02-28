@@ -4,10 +4,12 @@ ion-content,
     background-color: #ffffff;
 }
 
-.usuarios {
-    width: 100%;
-    height: 100%;
-    color: black;
+
+
+
+.usuarios,.placas{
+    background-color: #b7bcbe;
+
 }
 
 .principal,
@@ -58,11 +60,18 @@ ion-content,
 
 .principal {
     display: grid;
-    grid-template-columns: 40% 60%; /* Ajusta el tamaño de las columnas */
-    grid-template-areas: "usuarios registros"; /* Coloca usuarios y registros en la misma fila */
-    gap: 15px; /* Espacio entre columnas */
-    align-items: start;
+    grid-template-columns: 50% 50%; /* Ajusta el tamaño de las columnas */
+    grid-template-areas: "usuarios placas"; 
+    gap: 5px; /* Espacio entre columnas */
     padding: 10px;
+    border-radius: 10px;
+}
+
+.placas{
+    grid-area: placas;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
 .usuarios {
@@ -73,19 +82,20 @@ ion-content,
 }
 
 .registros {
+    margin-top: 5px;
     grid-area: registros;
-    background-color: transparent;
+    background-color: white;
     padding: 15px;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
     gap: 5px;
     width: 100%;
-    height: 100%;
+    height: 50%;
 }
 
 .reg-entrada {
-    background-color: #64c4fc;
+    background-color: #b7bcbe;
     color: rgb(0, 0, 0);
     padding: 10px;
     text-align: center;
@@ -94,7 +104,7 @@ ion-content,
 }
 
 .reg-salida {
-    background-color: #64c4fc;
+    background-color: #b7bcbe;
     color: rgb(0, 0, 0);
     padding: 10px;
     text-align: center;
@@ -110,7 +120,7 @@ ion-button#btn-registrar,
 }
 
 ion-item {
-    --background: white !important; /* Asegura que el fondo de ion-item sea blanco */
+    --background: #b7bcbe !important; /* Asegura que el fondo de ion-item sea blanco */
 }
 
 ion-input {
@@ -163,6 +173,8 @@ ion-button:hover {
 
 ion-list{
     background-color: white;
+    border-radius: 5%;
+    margin: 10px;
 }
 
 ion-title {
@@ -172,11 +184,35 @@ ion-title {
     line-height: 36px; /* Ajusta este valor según el tamaño del ícono */
 }
 
+
+ion-item {
+    --border-width: 0; /* Elimina el borde inferior */
+    --show-full-highlight: 0; /* Desactiva el resaltado completo */
+    --inner-border-width: 0; /* Elimina el borde interno */
+}
+.lista-usuarios{
+    background-color: white;
+    color: #000;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 5px;
+}
+
+.titulo-con-icono {
+    display: flex; /* Activa Flexbox */
+    align-items: center; /* Centra verticalmente */
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+.iconos-registros {
+    font-size: 50px; /* Tamaño del ícono */
+    margin-left: 10px; /* Espacio entre el texto y el ícono */
+}
+
+
+
 @media (max-width: 800px) {
-    .principal {
-        grid-template-columns: 100%;
-        grid-template-areas: "usuarios" "registros"; /* Apila los elementos en pantallas pequeñas */
-    }
+    
 
     .titulo ion-title {
         font-size: 16px;
@@ -186,5 +222,23 @@ ion-title {
         font-size: 100%;
         margin-left: 100px;
         margin-right: 0;
+    }
+
+    .principal {
+        grid-template-columns: 100%; /* Ajusta el tamaño de las columnas */
+        grid-template-areas: "usuarios" "placas"; 
+    }
+
+    .registros { 
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .reg-entrada {
+        height: 100%;
+    }
+    
+    .reg-salida {
+        height: 100%;
     }
 } 
