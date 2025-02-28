@@ -32,24 +32,28 @@
       <ion-button expand="full" (click)="crearUsuario()" id="btn-registrar">Registrar usuario</ion-button>
     </div>
 
-    <!-- Añadir placas  -->
-    <div class="placas">
-      <h2 class="titulo-con-icono">
-        Añadir placas
-        <ion-icon name="car" class="iconos-registros"></ion-icon>
-      </h2>
-      <ion-item>
-        <ion-label position="floating">Placas</ion-label>
-        <ion-input [(ngModel)]="nuevoUsuario" placeholder="Ingrese las placas del vehiculos "></ion-input>
-    </ion-item>
-    
-    <ion-item>
-        <ion-label position="floating">Usuario</ion-label>
-        <ion-input type="password" [(ngModel)]="nuevaPassword" placeholder="Ingrese el usuario propietario de las placas"></ion-input>
-    </ion-item>
+<!-- Añadir placas  -->
+<div class="placas">
+  <h2 class="titulo-con-icono">
+    Añadir placas
+    <ion-icon name="car" class="iconos-registros"></ion-icon>
+  </h2>
+  <ion-item>
+    <ion-label position="floating">Placas</ion-label>
+    <ion-input [(ngModel)]="nuevaPlaca" placeholder="Ingrese las placas del vehículo"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="stacked">Usuario propietario</ion-label>
+    <ion-select [(ngModel)]="usuarioPropietario" placeholder="Seleccione un usuario">
+      <ion-select-option *ngFor="let usuario of usuariosDisponibles" [value]="usuario.usuario">
+        {{ usuario.usuario }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
 
-      <ion-button expand="full" (click)="crearUsuario()" id="btn-registrar">Registrar placas</ion-button>
-    </div>
+  <ion-button expand="full" (click)="registrarPlaca()" id="btn-registrar">Registrar placas</ion-button>
+</div>
 
   </div>
 
@@ -63,7 +67,7 @@
   <ion-list>
     <ion-item *ngFor="let usuario of usuarios">
       <ion-label>{{ usuario.usuario }}</ion-label>
-      <ion-button (click)="editarUsuario(usuario)"><ion-icon name="create"></ion-icon></ion-button>
+      <ion-button (click)="editarUsuario(usuario)" class="btn-editar"><ion-icon name="create"></ion-icon></ion-button>
       <ion-button color="danger" (click)="eliminarUsuario(usuario._id)"><ion-icon name="trash"></ion-icon></ion-button>
     </ion-item>
   </ion-list>
@@ -77,11 +81,11 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
+      <ion-label position="floating">Nueva contraseña</ion-label>
       <ion-input type="password" [(ngModel)]="editandoUsuario.password"></ion-input>
     </ion-item>
 
-    <ion-button expand="full" (click)="guardarEdicion()">Guardar</ion-button>
+    <ion-button expand="full" (click)="guardarEdicion()" class="btn-guardar">Guardar</ion-button>
     <ion-button expand="full" color="medium" (click)="editandoUsuario = null">Cancelar</ion-button>
   </div>
 </div>

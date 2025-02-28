@@ -209,7 +209,20 @@ ion-item {
     margin-left: 10px; /* Espacio entre el texto y el ícono */
 }
 
+ion-label {
+    transform: translateY(-1px) scale(1) !important;
+  }
 
+.btn-guardar {
+    --background: #64c4fc; /* Cambiar el color de fondo */
+    --color: #ffffff; /* Color del texto */
+    --border-radius: 10px; /* Bordes redondeados */
+  }
+
+  .btn-editar {
+    --background: #64c4fc; /* Cambiar el color de fondo */
+    
+  }
 
 @media (max-width: 800px) {
     

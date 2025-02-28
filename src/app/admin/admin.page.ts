@@ -3,40 +3,41 @@ import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.page.html',
   styleUrls: ['./admin.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule], // Agrega los módulos necesarios
+  imports: [CommonModule, FormsModule, IonicModule],
 })
 export class AdminPage implements OnInit {
   nuevoUsuario: string = '';
   nuevaPassword: string = '';
+  nuevaPlaca: string = '';
+  usuarioPropietario: string = '';
   usuarios: any[] = [];
+  usuariosDisponibles: any[] = []; // Lista de usuarios disponibles (sin admin)
   estadoPorton: string = 'Estado del porton: Cerrado';
   editandoUsuario: any = null;
 
-  constructor(private apiService: ApiService, private router: Router) {} // Inyectar ambos en un solo constructor
-
-  
+  constructor(private apiService: ApiService, private router: Router) {}
 
   logout() {
-    this.router.navigate(['/login']); // Redirige al login
+    this.router.navigate(['/login']);
   }
 
   ngOnInit() {
     this.cargarUsuarios();
   }
 
-  // Cargar la lista de usuarios
   cargarUsuarios() {
     this.apiService.listarUsuarios().subscribe(
       (response) => {
         // Filtra los usuarios para excluir al admin
         this.usuarios = response.filter((usuario: any) => usuario.rol !== 'admin');
+        this.usuariosDisponibles = this.usuarios; // Asigna la lista filtrada a usuariosDisponibles
       },
       (error) => {
         console.error('Error al cargar usuarios', error);
@@ -44,12 +45,11 @@ export class AdminPage implements OnInit {
     );
   }
 
-  // Añadir un nuevo usuario
   crearUsuario() {
     this.apiService.crearUsuario(this.nuevoUsuario, this.nuevaPassword).subscribe(
       (response) => {
         alert('Usuario creado exitosamente');
-        this.cargarUsuarios(); // Recargar la lista de usuarios
+        this.cargarUsuarios();
         this.nuevoUsuario = '';
         this.nuevaPassword = '';
       },
@@ -59,17 +59,15 @@ export class AdminPage implements OnInit {
     );
   }
 
-  // Editar un usuario
   editarUsuario(usuario: any) {
     this.editandoUsuario = { ...usuario };
   }
 
-  // Guardar cambios al editar un usuario
   guardarEdicion() {
     this.apiService.editarUsuario(this.editandoUsuario._id, this.editandoUsuario.usuario, this.editandoUsuario.password).subscribe(
       (response) => {
         alert('Usuario editado exitosamente');
-        this.cargarUsuarios(); // Recargar la lista de usuarios
+        this.cargarUsuarios();
         this.editandoUsuario = null;
       },
       (error) => {
@@ -78,31 +76,41 @@ export class AdminPage implements OnInit {
     );
   }
 
-  // Eliminar un usuario
   eliminarUsuario(id: string) {
     if (confirm('¿Estás seguro de eliminar este usuario?')) {
-      this.apiService.eliminarUsuario(id).subscribe(
-        () => { // No intentamos acceder a response porque 204 no devuelve nada
-          alert('Usuario eliminado exitosamente');
-          this.cargarUsuarios(); // Recargar la lista después de eliminar
-        },
-        (error) => {
-          console.error('Error al eliminar usuario', error);
-          alert('Error al eliminar usuario');
-        }
-      );
+      // Obtener el usuario para eliminar sus placas
+      const usuario = this.usuarios.find(u => u._id === id);
+      if (usuario) {
+        this.apiService.eliminarPlacasPorUsuario(usuario.usuario).subscribe(
+          () => {
+            // Una vez que las placas se han eliminado, eliminar el usuario
+            this.apiService.eliminarUsuario(id).subscribe(
+              () => {
+                alert('Usuario y sus placas eliminados exitosamente');
+                this.cargarUsuarios();
+              },
+              (error) => {
+                console.error('Error al eliminar usuario', error);
+                alert('Error al eliminar usuario');
+              }
+            );
+          },
+          (error) => {
+            console.error('Error al eliminar placas', error);
+            alert('Error al eliminar las placas del usuario');
+          }
+        );
+      }
     }
   }
-  
 
-  // Modificar el estado del portón
   abrirPorton() {
-    this.estadoPorton = 'abriendo...'; // Actualizar UI
+    this.estadoPorton = 'abriendo...';
     this.apiService.modificarEstado('abierto').subscribe(
       () => {
         this.estadoPorton = 'abierto';
         setTimeout(() => {
-          this.cerrarPorton(); // Cerrar automáticamente después de 20 segundos
+          this.cerrarPorton();
         }, 20000);
       },
       (error) => {
@@ -113,14 +121,32 @@ export class AdminPage implements OnInit {
   }
 
   cerrarPorton() {
-    this.estadoPorton = 'cerrando...'; // Actualizar UI
+    this.estadoPorton = 'cerrando...';
     this.apiService.modificarEstado('cerrado').subscribe(
       () => {
         this.estadoPorton = 'cerrado';
       },
       (error) => {
         alert('Error al cerrar el portón');
-        this.estadoPorton = 'abierto'; // Si hay error, mantener estado abierto
+        this.estadoPorton = 'abierto';
+      }
+    );
+  }
+
+  registrarPlaca() {
+    if (!this.nuevaPlaca || !this.usuarioPropietario) {
+      alert('Por favor, complete todos los campos');
+      return;
+    }
+
+    this.apiService.registrarPlaca(this.nuevaPlaca, this.usuarioPropietario).subscribe(
+      (response) => {
+        alert('Placa registrada exitosamente');
+        this.nuevaPlaca = '';
+        this.usuarioPropietario = '';
+      },
+      (error) => {
+        alert('Error al registrar la placa');
       }
     );
   }

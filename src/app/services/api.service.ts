@@ -57,5 +57,13 @@ export class ApiService {
     return this.http.delete(`${this.apiUrl}/codigos/eliminar/${id}`);
   }
 
+  registrarPlaca(placa: string, usuarioPropietario: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/placas/registrar`, { placa, usuarioPropietario });
+  }
+
+  eliminarPlacasPorUsuario(usuario: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/placas/eliminarPorUsuario/${usuario}`);
+  }
+
   
 }
