@@ -224,6 +224,23 @@ ion-label {
     
   }
 
+  .exit {
+    --padding-start: 0; /* Elimina el padding a la izquierda */
+    --padding-end: 0;   /* Elimina el padding a la derecha */
+    --padding-top: 0;   /* Elimina el padding arriba */
+    --padding-bottom: 0; /* Elimina el padding abajo */
+    margin: 0;          /* Elimina el margen externo */
+    width: auto;        /* Asegura que el ancho se ajuste al contenido */
+    height: auto;       /* Asegura que la altura se ajuste al contenido */
+  }
+
+  .exit-icono{
+    color: #64c4fc;
+    font-size: 140%;
+    margin-left: 10px; /* Corregido: margin-left: 10x; */
+  }
+  
+
 @media (max-width: 800px) {
     
 
