@@ -65,5 +65,10 @@ export class ApiService {
     return this.http.delete(`${this.apiUrl}/placas/eliminarPorUsuario/${usuario}`);
   }
 
+  registrarTarjeta(id: string, propietario: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/tarjetas/registrar`, { id, propietario });
+  }
+
+
   
 }

@@ -21,6 +21,8 @@ export class AdminPage implements OnInit {
   usuariosDisponibles: any[] = []; // Lista de usuarios disponibles (sin admin)
   estadoPorton: string = 'Estado del porton: Cerrado';
   editandoUsuario: any = null;
+  nuevaTarjeta: string = ''; // Nueva propiedad para la tarjeta NFC
+
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -86,7 +88,7 @@ export class AdminPage implements OnInit {
             // Una vez que las placas se han eliminado, eliminar el usuario
             this.apiService.eliminarUsuario(id).subscribe(
               () => {
-                alert('Usuario y sus placas eliminados exitosamente');
+                alert('Usuario y metodos de acceso eliminados');
                 this.cargarUsuarios();
               },
               (error) => {
@@ -132,6 +134,25 @@ export class AdminPage implements OnInit {
       }
     );
   }
+
+  registrarTarjeta() {
+    if (!this.nuevaTarjeta || !this.usuarioPropietario) {
+      alert('Por favor, complete todos los campos');
+      return;
+    }
+  
+    this.apiService.registrarTarjeta(this.nuevaTarjeta, this.usuarioPropietario).subscribe(
+      (response) => {
+        alert('Tarjeta registrada exitosamente');
+        this.nuevaTarjeta = '';
+        this.usuarioPropietario = '';
+      },
+      (error) => {
+        alert('Error al registrar la tarjeta');
+      }
+    );
+  }
+  
 
   registrarPlaca() {
     if (!this.nuevaPlaca || !this.usuarioPropietario) {

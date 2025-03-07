@@ -55,6 +55,29 @@
   <ion-button expand="full" (click)="registrarPlaca()" id="btn-registrar">Registrar placas</ion-button>
 </div>
 
+
+<div class="tarjetas">
+  <h2 class="titulo-con-icono">
+    Añadir tarjeta
+    <ion-icon name="card" class="iconos-registros"></ion-icon>
+  </h2>
+  <ion-item>
+    <ion-label position="floating">Tarjeta</ion-label>
+    <ion-input [(ngModel)]="nuevaTarjeta" placeholder="Ingrese el ID de la tarjeta"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="stacked">Usuario propietario</ion-label>
+    <ion-select [(ngModel)]="usuarioPropietario" placeholder="Seleccione un usuario">
+      <ion-select-option *ngFor="let usuario of usuariosDisponibles" [value]="usuario.usuario">
+        {{ usuario.usuario }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="full" (click)="registrarTarjeta()" id="btn-registrar">Registrar tarjeta</ion-button>
+</div>
+
   </div>
 
   <!-- Sección de Registros -->
