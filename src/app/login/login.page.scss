@@ -12,53 +12,90 @@ ion-content {
     justify-content: center;
     width: 100%;
     height: 100vh; /* Ocupar toda la pantalla */
-    background-color: rgb(0, 0, 0);
+    //background-color: rgb(88, 88, 88);
     overflow: hidden; /* Asegura que no haya desbordamiento */
+    background-image: url(../../assets/icon/fondo2.jpg);
+    background-size: cover;
 }
-
-
 
 .contenido {
     display: flex;
     flex-direction: column;
     width: 100%;
     gap: 15px; /* Espacio entre elementos */
+    align-items: center;
 }
 
-ion-item {
+#btnInicio {
+    margin-top: 20px;
     width: 100%;
+    font-size: 13px;
+    --background: trasparent; /* Cambia el color de fondo */
+    color: rgb(255, 255, 255); /* Cambia el color del texto/ícono */
+    align-self: end;
+    position: relative;
+    border: 1px solid transparent; /* Establece el borde del botón */
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s ease, border-color 0.4s ease;
+    z-index: 1;
 }
 
-ion-button {
-    margin-top: 15px;
-    width: 30%;
-    margin-left: 80%;
-    --background: #000000; /* Cambia el color de fondo */
-    --color: white; /* Cambia el color del texto/ícono */
+#btnInicio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #007bff; /* Color con el que quieres que se llene (puedes cambiarlo) */
+    transition: width 0.4s ease;
+    z-index: -1;
+    width: 0%; /* Comienza con un ancho de 0% */
 }
 
+#btnInicio:hover {
+    color: rgb(255, 255, 255); /* Cambiar color del texto al hacer hover */
+    border-color: #d5d5d5; /* Borde de color azul (o el que prefieras) */
+}
 
-ion-item{
-    border-radius: 30px;
+#btnInicio:hover::before {
+    width: 100%; /* Al hacer hover, el color se llena completamente */
 }
 
 #icono {
-    font-size: 80px; /* Aumenta el tamaño del icono */
-    color: #64c4fc; /* Ajusta el color si lo necesitas */
+    font-size: 60px; /* Aumenta el tamaño del icono */
+    color: #ffff; /* Ajusta el color si lo necesitas */
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+    width: 60%; /* Asegura que ocupe todo el ancho del contenedor */
     margin-bottom: 10px; /* Espacio debajo del icono */
 }
 
-ion-button:hover ion-icon {
-    color: #64c4fc 
-    ;
+
+ion-card{
+    padding: 40px;
+    background-color: rgb(0,0,0, 0.75);
+    transition: 1s;
+}
+
+ion-card:hover{
+    background-color: #000000;
+}
+
+ion-input.ion-valid {
+    --border-color:  #64c4fc !important; /* Cambia a azul cuando es válido */
+    --highlight-color:  #64c4fc !important;  /* Cambia el color de la etiqueta a azul cuando es válido */
+    --color: #ffff
+}
+
+ion-input.ion-invalid.ion-touched {
+    --border-color:  #ffffff !important; /* Cambia a azul cuando es válido */
+    --highlight-color:  #ffffff  !important;  /* Cambia el color de la etiqueta a azul cuando es válido */
 }
 
 
 
-
-
+  
 

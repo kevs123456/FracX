@@ -7,7 +7,7 @@
       <div class="control">
         <div class="botones">
           <ion-button class="btn-abrir" expand="full" (click)="abrirPorton()">Abrir Portón</ion-button>
-          <ion-button fill="clear" class="exit" (click)="logout()"><ion-icon name="exit" class="exit-icono"></ion-icon></ion-button>
+          <ion-button fill="clear" class="exit" (click)="logout()"><ion-img id="icono" src="../../assets/icon/exit.png"></ion-img></ion-button>
         </div>
       </div>
     </div>
@@ -18,18 +18,10 @@
   <div class="principal">
     <!-- Sección de Añadir Usuario -->
     <div class="usuarios">
-      <h2 class="titulo-con-icono">Añadir Usuario <ion-icon name="person-add" class="iconos-registros"></ion-icon></h2>
-      <ion-item>
-        <ion-label position="floating">Usuario </ion-label>
-        <ion-input [(ngModel)]="nuevoUsuario" placeholder="Ingrese el usuario a registrar (Nombre-numero de casa)"></ion-input>
-    </ion-item>
-    
-    <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="nuevaPassword" placeholder="Ingrese la contraseña"></ion-input>
-    </ion-item>
-
-      <ion-button expand="full" (click)="crearUsuario()" id="btn-registrar">Registrar usuario</ion-button>
+      <h2 class="titulo-con-icono">Añadir usuario <ion-icon name="person-add" class="iconos-registros"></ion-icon></h2>
+        <ion-input label="Usuario" label-placement="floating" fill="outline" type="text" [(ngModel)]="nuevoUsuario" placeholder="Ingrese el usuario a registrar (Nombre-numero de casa)" ></ion-input>
+        <ion-input label="Contraseña" label-placement="floating" fill="outline" [(ngModel)]="nuevaPassword" placeholder="Ingrese la contraseña"></ion-input>
+        <ion-button id="btnInicio" expand="full" (click)="crearUsuario()">Registrar usuario</ion-button>
     </div>
 
 <!-- Añadir placas  -->
@@ -38,21 +30,16 @@
     Añadir placas
     <ion-icon name="car" class="iconos-registros"></ion-icon>
   </h2>
-  <ion-item>
-    <ion-label position="floating">Placas</ion-label>
-    <ion-input [(ngModel)]="nuevaPlaca" placeholder="Ingrese las placas del vehículo"></ion-input>
-  </ion-item>
-  
-  <ion-item>
-    <ion-label position="stacked">Usuario propietario</ion-label>
-    <ion-select [(ngModel)]="usuarioPropietario" placeholder="Seleccione un usuario">
-      <ion-select-option *ngFor="let usuario of usuariosDisponibles" [value]="usuario.usuario">
-        {{ usuario.usuario }}
-      </ion-select-option>
-    </ion-select>
-  </ion-item>
 
-  <ion-button expand="full" (click)="registrarPlaca()" id="btn-registrar">Registrar placas</ion-button>
+  <ion-input label="Placas" label-placement="floating" fill="outline" type="text" [(ngModel)]="nuevaPlaca" placeholder="Ingrese las placas del vehículo"></ion-input>
+
+  <ion-select label="Usuario propietario" label-placement="floating" fill="outline" [(ngModel)]="usuarioPropietario">
+    <ion-select-option *ngFor="let usuario of usuariosDisponibles" [value]="usuario.usuario">
+      {{ usuario.usuario }}
+    </ion-select-option>
+  </ion-select>
+
+  <ion-button expand="full" (click)="registrarPlaca()" id="btnInicio">Registrar placas</ion-button>
 </div>
 
 
@@ -61,21 +48,15 @@
     Añadir tarjeta
     <ion-icon name="card" class="iconos-registros"></ion-icon>
   </h2>
-  <ion-item>
-    <ion-label position="floating">Tarjeta</ion-label>
-    <ion-input [(ngModel)]="nuevaTarjeta" placeholder="Ingrese el ID de la tarjeta"></ion-input>
-  </ion-item>
+    <ion-input label="Tarjeta" label-placement="floating" fill="outline" position="floating" [(ngModel)]="nuevaTarjeta" placeholder="Ingrese el ID de la tarjeta"></ion-input>
   
-  <ion-item>
-    <ion-label position="stacked">Usuario propietario</ion-label>
-    <ion-select [(ngModel)]="usuarioPropietario" placeholder="Seleccione un usuario">
+    <ion-select label="Usuario propietario" label-placement="floating" fill="outline" [(ngModel)]="usuarioPropietario" placeholder="Seleccione un usuario">
       <ion-select-option *ngFor="let usuario of usuariosDisponibles" [value]="usuario.usuario">
         {{ usuario.usuario }}
       </ion-select-option>
     </ion-select>
-  </ion-item>
 
-  <ion-button expand="full" (click)="registrarTarjeta()" id="btn-registrar">Registrar tarjeta</ion-button>
+  <ion-button expand="full" (click)="registrarTarjeta()" id="btnInicio">Registrar tarjeta</ion-button>
 </div>
 
   </div>
@@ -86,7 +67,7 @@
     <div class="reg-salida">Salida</div>
   </div>
 <div class="lista-usuarios">
-  <h2>Lista de Usuarios</h2>
+  <h2>Lista de usuarios</h2>
   <ion-list>
     <ion-item *ngFor="let usuario of usuarios">
       <ion-label>{{ usuario.usuario }}</ion-label>
