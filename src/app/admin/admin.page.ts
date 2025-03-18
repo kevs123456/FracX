@@ -22,6 +22,9 @@ export class AdminPage implements OnInit {
   estadoPorton: string = 'Estado del porton: Cerrado';
   editandoUsuario: any = null;
   nuevaTarjeta: string = ''; // Nueva propiedad para la tarjeta NFC
+  registrosEntrada: any[] = []; // Arreglo para registros de entrada
+  registrosSalida: any[] = [];  // Arreglo para registros de salida
+
 
 
   constructor(private apiService: ApiService, private router: Router) {}
@@ -168,6 +171,26 @@ export class AdminPage implements OnInit {
       },
       (error) => {
         alert('Error al registrar la placa');
+      }
+    );
+  }
+
+  cargarRegistros() {
+    this.apiService.obtenerRegistrosEntrada().subscribe(
+      (response) => {
+        this.registrosEntrada = response;
+      },
+      (error) => {
+        console.error('Error al cargar registros de entrada', error);
+      }
+    );
+
+    this.apiService.obtenerRegistrosSalida().subscribe(
+      (response) => {
+        this.registrosSalida = response;
+      },
+      (error) => {
+        console.error('Error al cargar registros de salida', error);
       }
     );
   }

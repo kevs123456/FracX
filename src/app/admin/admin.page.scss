@@ -40,6 +40,12 @@ ion-content{
 
 .btn-abrir {
     grid-area: btn-abrir;
+    --background: #0000; /* Cambia el color de fondo */
+    color: rgb(255, 255, 255); /* Cambia el color del texto/ícono */
+    position: relative;
+    border: 1px solid transparent; /* Establece el borde del botón */
+    transition: color 0.4s ease, border-color 0.4s ease;
+
 }
 
 h2{

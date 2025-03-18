@@ -63,8 +63,24 @@
 
   <!-- Sección de Registros -->
   <div class="registros">
-    <div class="reg-entrada">Entrada</div>
-    <div class="reg-salida">Salida</div>
+    <div class="reg-entrada">Entrada
+      <div>
+        <ion-list>
+          <ion-item *ngFor="let registro of registrosEntrada">
+            <ion-label>{{ registro.usuario }} - {{ registro.hora }} - {{ registro.metodo }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+    <div class="reg-salida">Salida
+      <div>
+        <ion-list>
+          <ion-item *ngFor="let registro of registrosSalida">
+            <ion-label>{{ registro.usuario }} - {{ registro.hora }} - {{ registro.estadoPorton }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
   </div>
 <div class="lista-usuarios">
   <h2>Lista de usuarios</h2>
