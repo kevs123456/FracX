@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://192.168.18.211:3000'; // Usa la IP del servidor
-  private apiUrl2 = 'http://192.168.18.211:3001'; // Asegúrate de que la IP es accesible desde tu app
+  private apiUrl = 'http://192.168.1.200:3000'; // Usa la IP del servidor
+  private apiUrl2 = 'http://192.168.1.200:3001'; // Asegúrate de que la IP es accesible desde tu app
 
   constructor(private http: HttpClient) {}
 
@@ -71,7 +71,7 @@ export class ApiService {
   }
 
   obtenerRegistrosEntrada(): Observable<any> {
-      return this.http.get(`${this.apiUrl}/registros/entrada`);
+      return this.http.get(`${this.apiUrl}/registros/entradas`);
     }
   
   obtenerRegistrosSalida(): Observable<any> {
