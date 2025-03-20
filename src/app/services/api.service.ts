@@ -45,9 +45,9 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/modificarEstado`, { estado });
   }
 
-  agregarCodigo(userId: string, codigo: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/codigos/agregar`, { userId, codigo });
-  }
+  agregarCodigo(userId: string, codigo: string, propietario: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/codigos/agregar`, { userId, codigo, propietario });
+}
 
   // Método para obtener los códigos de un usuario
   obtenerCodigos(userId: string): Observable<any> {
