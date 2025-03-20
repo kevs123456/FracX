@@ -35,17 +35,27 @@ ion-content{
     display: grid;
     grid-template-columns: 40% 15%;
     grid-template-areas: "btn-abrir exit";
+    align-items: center;
     justify-content: end;
+    justify-items: end;
 }
+
+.exit {
+    grid-area: exit;
+    width: auto;        /* Asegura que el ancho se ajuste al contenido */
+    height: auto;       /* Asegura que la altura se ajuste al contenido */
+}
+
 
 .btn-abrir {
     grid-area: btn-abrir;
-    --background: #0000; /* Cambia el color de fondo */
-    color: rgb(255, 255, 255); /* Cambia el color del texto/ícono */
-    position: relative;
     border: 1px solid transparent; /* Establece el borde del botón */
-    transition: color 0.4s ease, border-color 0.4s ease;
+    --color: #ffffff;
+}
 
+.btn-abrir:hover {
+    background-color: #64c4fc; /* Color con el que quieres que se llene (puedes cambiarlo) */
+    --color: #101010;
 }
 
 h2{
@@ -147,10 +157,8 @@ ion-select{
 }
 
 #icono {
-    width: 50%; /* Asegura que ocupe todo el ancho del contenedor */
+    width: 30px; /* Asegura que ocupe todo el ancho del contenedor */
     grid-area: exit;
-    margin-left: 5px; /* Corregido: margin-left: 10x; */
-    color: #ffffff;
 }
 
 ion-input {
@@ -212,16 +220,6 @@ ion-item {
     --background: #64c4fc; /* Cambiar el color de fondo */
     
   }
-
-.exit {
-    --padding-start: 0; /* Elimina el padding a la izquierda */
-    --padding-end: 0;   /* Elimina el padding a la derecha */
-    --padding-top: 0;   /* Elimina el padding arriba */
-    --padding-bottom: 0; /* Elimina el padding abajo */
-    margin: 0;          /* Elimina el margen externo */
-    width: auto;        /* Asegura que el ancho se ajuste al contenido */
-    height: auto;       /* Asegura que la altura se ajuste al contenido */
-  }
   
 ion-input.ion-valid {
     --border-color:  #64c4fc !important; /* Cambia a azul cuando es válido */
@@ -261,7 +259,6 @@ ion-select.ion-invalid.ion-touched {
     border-radius: 5px;
     width: 50%; /* Cada sección ocupa la mitad del contenedor */
     height: 100%; /* Ocupa toda la altura del contenedor padre */
-    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
 }
 
 /* Estilos para las listas de registros */
@@ -304,12 +301,6 @@ ion-label {
 
     .titulo ion-title {
         font-size: 16px;
-    }
-
-    .exit {
-        font-size: 100%;
-        margin-left: 100px;
-        margin-right: 0;
     }
 
     .principal {
