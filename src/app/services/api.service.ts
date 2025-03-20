@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://192.168.1.93:3000'; // Usa la IP del servidor
+  private apiUrl = 'http://192.168.100.29:3000'; // Usa la IP del servidor
+  private apiUrl2 = 'http://192.168.100.29:3001'; // Asegúrate de que la IP es accesible desde tu app
 
   constructor(private http: HttpClient) {}
 
