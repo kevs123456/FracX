@@ -67,7 +67,7 @@ export class ApiService {
   }
 
   registrarTarjeta(id: string, propietario: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/tarjetas/registrar`, { id, propietario });
+    return this.http.post(`${this.apiUrl2}/tarjetas/registrar`, { id, propietario });
   }
 
 
