@@ -53,29 +53,31 @@ export class UsuarioPage implements OnInit {
   // Método para generar un código aleatorio
   generarCodigo() {
     const userId = localStorage.getItem('userId'); // Obtener el ID del usuario
-    if (!userId) {
-      this.mostrarAlerta('Error', 'Usuario no identificado');
-      return;
+    const nombreUsuario = this.nombreUsuario; // Obtener el nombre del usuario
+
+    if (!userId || !nombreUsuario) {
+        this.mostrarAlerta('Error', 'Usuario no identificado');
+        return;
     }
 
     // Generar un código aleatorio de 6 dígitos
     const codigo = Math.floor(100000 + Math.random() * 900000).toString();
 
     // Enviar el código al backend para almacenarlo
-    this.apiService.agregarCodigo(userId, codigo).subscribe(
-      (response) => {
-        if (response.success) {
-          this.mostrarAlerta('Éxito', 'Código generado y guardado');
-          this.obtenerCodigos(userId); // Actualizar la lista de códigos
-        } else {
-          this.mostrarAlerta('Error', response.message);
+    this.apiService.agregarCodigo(userId, codigo, nombreUsuario).subscribe(
+        (response) => {
+            if (response.success) {
+                this.mostrarAlerta('Éxito', 'Código generado y guardado');
+                this.obtenerCodigos(userId); // Actualizar la lista de códigos
+            } else {
+                this.mostrarAlerta('Error', response.message);
+            }
+        },
+        (error) => {
+            this.mostrarAlerta('Error', 'No se pudo conectar al servidor');
         }
-      },
-      (error) => {
-        this.mostrarAlerta('Error', 'No se pudo conectar al servidor');
-      }
     );
-  }
+}
 
   // Método para obtener los códigos del usuario
   obtenerCodigos(userId: string) {
