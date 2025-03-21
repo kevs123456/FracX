@@ -13,12 +13,28 @@ ion-content{
     background-color: #151515;
 }
 
+.registros:hover{
+    background-color: #151515;
+}
+
+.lista-usuarios:hover{
+    background-color: #151515;
+}
+
 /* Estilos para el header */
 .header {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-areas: "titulo control";
     align-items: center;
+}
+
+ion-menu ion-toolbar {
+    background-color: #313131;
+}
+
+ion-menu ion-toolbar ion-title {
+    font-size: 16px;
 }
 
 .titulo {
@@ -29,6 +45,7 @@ ion-content{
 
 .control {
     grid-area: control;
+    padding: 3px;
 }
 
 .botones {
@@ -51,6 +68,7 @@ ion-content{
     grid-area: btn-abrir;
     border: 1px solid transparent; /* Establece el borde del botón */
     --color: #ffffff;
+    font-size: 12px;
 }
 
 .btn-abrir:hover {
@@ -66,10 +84,7 @@ h2{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; /* Ajusta el tamaño de las columnas */
     grid-template-areas: "usuarios placas tarjetas"; 
-    //gap: 5px; /* Espacio entre columnas */
-    //padding: 10px;
 }
-
 
 .placas{
     grid-area: placas;
@@ -77,9 +92,8 @@ h2{
 }
 
 ion-select{
-    width: 50%;
+    width: 101%;
     padding-left: 5px;
-    //padding: 15px;
 }
 
 .usuarios {
@@ -91,32 +105,6 @@ ion-select{
 .tarjetas{
     grid-area: tarjetas;
     padding: 15px;
-}
-
-.registros {
-    grid-area: registros;
-    padding: 15px;
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    width: 100%;
-    height: 30%;
-}
-
-.reg-entrada {
-    background-color: #303030;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.reg-salida {
-    background-color: #303030;
-    padding: 10px;
-    text-align: center;
-    border-radius: 2px;
-    width: 100%;
 }
 
 #btnInicio {
@@ -172,9 +160,8 @@ ion-label {
 }
 
 .cog {
-    font-size: 36px; /* Tamaño del ícono */
+    font-size: 150%; /* Tamaño del ícono */
     vertical-align: middle; /* Alinea el ícono verticalmente con el texto */
-    margin-right: 8px; /* Espacio entre el ícono y el texto */
 }
 
 ion-list{
@@ -218,7 +205,7 @@ ion-item {
 
 .btn-editar {
     --background: #64c4fc; /* Cambiar el color de fondo */
-    
+
   }
   
 ion-input.ion-valid {
@@ -245,30 +232,44 @@ ion-select.ion-invalid.ion-touched {
 .registros {
     display: flex;
     flex-direction: row;
-    gap: 10px; /* Espacio entre las secciones de entrada y salida */
+    gap: 5px; /* Espacio entre las secciones de entrada y salida */
     padding: 15px;
     width: 100%;
-    height: 300px; /* Altura fija para el contenedor de registros */
+    height: auto; /* Altura fija para el contenedor de registros */
 }
 
 /* Estilos para las secciones de entrada y salida */
 .reg-entrada,
 .reg-salida {
-    background-color: #303030;
     padding: 10px;
     border-radius: 5px;
-    width: 50%; /* Cada sección ocupa la mitad del contenedor */
+    width: 100%; /* Cada sección ocupa la mitad del contenedor */
     height: 100%; /* Ocupa toda la altura del contenedor padre */
 }
 
 /* Estilos para las listas de registros */
 ion-list {
-    background-color: #111111;
+    background-color:#313131;
     border-radius: 5px;
     margin: 0; /* Elimina el margen predeterminado */
     padding: 0; /* Elimina el padding predeterminado */
 }
 
+ion-grid{
+    background-color:#313131;
+    border-radius: 5px;
+    margin: 0; /* Elimina el margen predeterminado */
+    padding: 0; /* Elimina el padding predeterminado */
+}
+
+ion-col{
+    border: 1px solid #000000;
+    padding: 10px;
+}
+
+#row-header{
+    background-color: #64c4fc;
+}
 /* Estilos para los elementos de la lista */
 ion-item {
     --background: transparent; /* Fondo transparente */
@@ -286,18 +287,34 @@ ion-label {
     white-space: normal; /* Permite que el texto se ajuste a varias líneas */
 }
 
-/* Estilos para los títulos de las secciones */
-.reg-entrada h2,
-.reg-salida h2 {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #ffffff;
-}
+ion-menu {
+    width: 400px; /* Ajusta el ancho del menú */
+  }
 
+  ion-menu ion-content {
+   background-color: #101010;
+   width: 400px;
+  }
+
+.btn-editarU {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; 
+} 
+// Ocultar menú hamburguesa en escritorio
+.mobile-menu {
+    display: none;
+  }
 
 @media (max-width: 800px) {
     
+    .control {
+        display: none;
+      }
+    
+    .mobile-menu {
+        display: block
+      }
 
     .titulo ion-title {
         font-size: 16px;
@@ -310,7 +327,7 @@ ion-label {
 
     .registros { 
         flex-direction: column;
-        height: 100%;
+        height: auto;
     }
 
     .reg-entrada {

@@ -1,32 +1,24 @@
 <ion-header>
-  <ion-toolbar>
-    <div class="header">
-      <ion-icon name="person" class="left-icon"></ion-icon>
-      <p id="nombre">{{ nombreUsuario }}</p>
-      <ion-button fill="clear" class="right-icon" (click)="logout()">
-        <ion-icon name="exit" class="iconos"></ion-icon>
-      </ion-button>
-    </div>
+  <ion-toolbar color="black">
+    <ion-title><img src="../../assets/icon/nombre.png" alt="" width="150px" height="auto"></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="principal">
-    <div class="generador">
-      <h1 class="gen">Tus códigos de acceso:</h1>
+<ion-content class="principal">
+
+  <div class="header">
+    <p>Bienvenido a tu panel de control<strong> {{ nombreUsuario }}</strong></p>
+    <ion-button fill="clear" class="exit" (click)="logout()"><ion-img id="icono" src="../../assets/icon/exit.png"></ion-img></ion-button>
+  </div>
+
+  <div class="generador">
+      <h1 class="gen">Codigos creados</h1>
       <ion-icon name="add-circle" id="agregar" (click)="generarCodigo()"></ion-icon>
     </div>
-    <ion-list>
-      <ion-item-sliding *ngFor="let codigo of codigos">
+    <ion-list *ngFor="let codigo of codigos">
         <ion-item>
           <ion-label>{{ codigo.codigo }}</ion-label>
+          <ion-button side="end" color="danger" (click)="eliminarCodigo(codigo._id)"><ion-icon name="trash"></ion-icon></ion-button>
         </ion-item>
-        <ion-item-options side="end">
-          <ion-item-option color="danger" (click)="eliminarCodigo(codigo._id)">
-            <ion-icon name="trash"></ion-icon>
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
     </ion-list>
-  </div>
 </ion-content>

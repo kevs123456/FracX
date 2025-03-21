@@ -185,7 +185,7 @@ export class AdminPage implements OnInit {
         console.log('Registros de entrada:', response);
         const registros = Array.isArray(response) ? response : response.data;
         registros.sort((a: any, b: any) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime());
-        this.registrosEntrada = registros.slice(0, 3);
+        this.registrosEntrada = registros.slice(0, 5);
       },
       (error) => {
         console.error('Error al cargar registros de entrada', error);
@@ -200,7 +200,7 @@ export class AdminPage implements OnInit {
         // Ordena los registros por fecha (si no están ordenados)
         registros.sort((a: any, b: any) => new Date(b.fecha_hora).getTime() - new Date(a.fecha_hora).getTime());
         // Extrae solo la hora de cada registro
-        this.registrosSalida = registros.slice(0, 3).map((registro: any) => {
+        this.registrosSalida = registros.slice(0, 5).map((registro: any) => {
           return {
             hora: this.extraerHora(registro.fecha_hora) // Extrae solo la hora
           };
