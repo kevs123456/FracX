@@ -1,28 +1,36 @@
-
 <ion-header>
   <ion-toolbar color="black">
-    <ion-title><img src="../../assets/icon/nombre.png" alt="" width="150px" height="auto"></ion-title>
+    <ion-title>
+      <img src="../../assets/icon/nombre.png" alt="" width="150px" height="auto">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/contact">
+        <ion-icon name="mail-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="container">
-     <form (ngSubmit)="login()">
+    <form (ngSubmit)="login()">
       <ion-card>
         <div class="contenido">
           <ion-img id="icono" src="../../assets/icon/user.png"></ion-img>
 
-            <ion-input label="Usuario" label-placement="floating" fill="outline" placeholder="Ingresar usuario" type="text" [(ngModel)]="usuario" name="usuario" required ></ion-input>
-        
-            <ion-input label="Contraseña" label-placement="floating" fill="outline" placeholder="Ingresar contraseña" type="password" [(ngModel)]="password" name="password" required></ion-input>
+          <ion-input label="Usuario" label-placement="floating" fill="outline" placeholder="Ingresar usuario" 
+            type="text" [(ngModel)]="usuario" name="usuario" required>
+          </ion-input>
+
+          <ion-input label="Contraseña" label-placement="floating" fill="outline" placeholder="Ingresar contraseña" 
+            type="password" [(ngModel)]="password" name="password" required>
+          </ion-input>
 
           <ion-button id="btnInicio" type="submit">
             <ion-text name="arrow-forward" id="enviar">Iniciar</ion-text>
           </ion-button>
         </div>
       </ion-card>
-      </form> 
- 
-
+    </form>
   </div>
 </ion-content>

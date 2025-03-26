@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Contacto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input [(ngModel)]="email" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Mensaje</ion-label>
+      <ion-textarea [(ngModel)]="message"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="sendMessage()">Enviar</ion-button>
+
+  <ion-text color="success" *ngIf="successMessage">{{ successMessage }}</ion-text>
+  <ion-text color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-text>
+</ion-content>
