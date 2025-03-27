@@ -1,0 +1,7 @@
+{
+  "name": "FracX",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

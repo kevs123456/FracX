@@ -1,0 +1,269 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Acerca de Fracx</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="share()">
+        <ion-icon slot="icon-only" name="share-social"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Banner superior -->
+  <div class="hero-banner">
+    <img src="../../assets/icon/fondo2.jpg" alt="Sistemas de seguridad Fracx">
+    <div class="hero-text">
+      <h1>Innovación en control de acceso</h1>
+      <p>Soluciones tecnológicas para comunidades más seguras</p>
+    </div>
+  </div>
+
+  <!-- Sección de Misión y Visión en columnas -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6">
+        <ion-card class="mission-card">
+          <ion-card-header>
+            <ion-icon name="rocket" color="primary"></ion-icon>
+            <ion-card-title>Misión</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>
+              En Fracx, nuestra misión es proporcionar soluciones tecnológicas innovadoras para el control de acceso a fraccionamientos, 
+              garantizando seguridad, eficiencia y comodidad mediante códigos generados por la app, 
+              tarjetas NFC y reconocimiento de placas.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      
+      <ion-col size="12" size-md="6">
+        <ion-card class="vision-card">
+          <ion-card-header>
+            <ion-icon name="eye" color="primary"></ion-icon>
+            <ion-card-title>Visión</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>
+              Aspiramos a ser líderes en sistemas de control de acceso, ofreciendo soluciones integrales que se adapten 
+              a las necesidades de nuestros clientes y contribuyan a crear comunidades más seguras y conectadas.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Sección de Servicios con acordeón -->
+  <ion-card class="services-card">
+    <ion-card-header>
+      <ion-card-title>Nuestros Servicios</ion-card-title>
+      <ion-card-subtitle>Tecnología avanzada para tu seguridad</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-accordion-group>
+        <ion-accordion value="first">
+          <ion-item slot="header" color="light">
+            <ion-icon name="qr-code" slot="start" color="primary"></ion-icon>
+            <ion-label>Códigos de acceso</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            Generación de códigos únicos y temporales a través de nuestra aplicación móvil para un acceso seguro y controlado.
+          </div>
+        </ion-accordion>
+        
+        <ion-accordion value="second">
+          <ion-item slot="header" color="light">
+            <ion-icon name="card" slot="start" color="primary"></ion-icon>
+            <ion-label>Tarjetas NFC</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            Implementación de tarjetas con tecnología NFC para un acceso rápido, seguro y sin contacto.
+          </div>
+        </ion-accordion>
+        
+        <ion-accordion value="third">
+          <ion-item slot="header" color="light">
+            <ion-icon name="car-sport" slot="start" color="primary"></ion-icon>
+            <ion-label>Reconocimiento de placas</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            Sistema avanzado de reconocimiento de placas vehiculares para un control automatizado de ingresos.
+          </div>
+        </ion-accordion>
+        
+        <ion-accordion value="fourth">
+          <ion-item slot="header" color="light">
+            <ion-icon name="git-network" slot="start" color="primary"></ion-icon>
+            <ion-label>Integración de sistemas</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            Compatibilidad con sistemas de seguridad existentes para una solución completa y personalizada.
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Sección de Ubicación -->
+  <ion-card class="location-card">
+    <ion-card-header>
+      <ion-card-title>Ubicación</ion-card-title>
+      <ion-card-subtitle>Visítanos en nuestras oficinas</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="contact-info">
+        <ion-item lines="none">
+          <ion-icon name="location" slot="start" color="primary"></ion-icon>
+          <ion-label>
+            <h3>Dirección</h3>
+            <p>Av. Tecnológico #123, Fracc. Innovación, Ciudad Futura, CP 12345.</p>
+          </ion-label>
+        </ion-item>
+        
+        <ion-item lines="none">
+          <ion-icon name="call" slot="start" color="primary"></ion-icon>
+          <ion-label>
+            <h3>Teléfono</h3>
+            <p>+52 55 1234 5678</p>
+          </ion-label>
+        </ion-item>
+        
+        <ion-item lines="none">
+          <ion-icon name="mail" slot="start" color="primary"></ion-icon>
+          <ion-label>
+            <h3>Email</h3>
+            <p>infofracx.com</p>
+          </ion-label>
+        </ion-item>
+        
+        <ion-item lines="none">
+          <ion-icon name="time" slot="start" color="primary"></ion-icon>
+          <ion-label>
+            <h3>Horario</h3>
+            <p>Lunes a Viernes: 9:00 - 18:00</p>
+            <p>Sábados: 10:00 - 14:00</p>
+          </ion-label>
+        </ion-item>
+      </div>
+      
+      <!-- Mapa mejorado -->
+<!-- Mapa mejorado y bloqueado -->
+<div class="map-container">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3510.678931226758!2d-106.409859!3d31.599265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDM1JzU3LjQiTiAxMDbCsDI0JzM1LjUiVw!5e0!3m2!1ses!2smx!4v1620000000000!5m2!1ses!2smx"
+    width="100%" 
+    height="300" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy"
+    frameborder="0"
+    scrolling="no"
+    gesturehandling="none"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+      
+      <!-- Redes sociales -->
+      <div class="social-media">
+        <h3>Síguenos en redes sociales</h3>
+        <div class="social-icons">
+          <ion-button fill="clear" color="primary" href="https://www.facebook.com/profile.php?id=61574577937867" target="_blank" aria-label="Facebook">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" color="primary" href="https://x.com/_Frac_X" target="_blank" aria-label="Twitter">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" color="primary" href="https://www.instagram.com/_frac_x/" target="_blank" aria-label="Instagram">
+            <ion-icon name="logo-instagram"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" color="primary" href="https://www.youtube.com/@Frac_X" target="_blank" aria-label="YouTube">
+            <ion-icon name="logo-youtube"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+<!-- Formulario de Contacto - Estilo login pero tamaño original -->
+<ion-card class="contact-card">
+  <ion-card-header>
+    <ion-card-title>Contáctanos</ion-card-title>
+    <ion-card-subtitle>¿Tienes dudas? Escríbenos</ion-card-subtitle>
+  </ion-card-header>
+  
+  <ion-card-content>
+    <form #contactForm="ngForm" (ngSubmit)="sendMessage()">
+      <ion-input 
+        label="Nombre completo" 
+        label-placement="floating" 
+        fill="outline" 
+        placeholder="Ingresa tu nombre"
+        [(ngModel)]="name" 
+        name="name" 
+        required
+        class="custom-input">
+      </ion-input>
+
+      <ion-input 
+        label="Correo electrónico" 
+        label-placement="floating" 
+        fill="outline" 
+        placeholder="Ingresa tu correo"
+        type="email"
+        [(ngModel)]="email" 
+        name="email" 
+        required
+        class="custom-input">
+      </ion-input>
+      
+      <ion-input 
+        label="Teléfono (opcional)" 
+        label-placement="floating" 
+        fill="outline" 
+        placeholder="Ingresa tu teléfono"
+        type="tel"
+        [(ngModel)]="phone" 
+        name="phone"
+        class="custom-input">
+      </ion-input>
+
+      <ion-textarea 
+        label="Mensaje" 
+        label-placement="floating" 
+        fill="outline" 
+        placeholder="Escribe tu mensaje"
+        rows="5"
+        [(ngModel)]="message" 
+        name="message" 
+        required
+        class="custom-input">
+      </ion-textarea>
+
+      <div class="recaptcha-container">
+        <div id="recaptcha-container" style="min-width: 304px; min-height: 78px;"></div>
+        <ion-note *ngIf="!recaptchaVerified && contactForm.submitted" color="danger">
+          Por favor, completa el reCAPTCHA
+        </ion-note>
+      </div>
+
+      <ion-button type="submit" expand="block" class="custom-button" [disabled]="contactForm.invalid">
+        <ion-icon name="send" slot="start"></ion-icon>
+        Enviar mensaje
+      </ion-button>
+    </form>
+
+    <div class="feedback-messages">
+      <ion-text color="success" *ngIf="successMessage">
+        <p>{{ successMessage }}</p>
+      </ion-text>
+      <ion-text color="danger" *ngIf="errorMessage">
+        <p>{{ errorMessage }}</p>
+      </ion-text>
+    </div>
+  </ion-card-content>
+</ion-card>

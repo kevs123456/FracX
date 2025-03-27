@@ -1,0 +1,54 @@
+.header {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    justify-content: space-between; /* Distribuye los elementos */
+    width: 100%;
+    font-size: 100%;
+    height: auto;
+}
+
+p{
+    margin-left: 10px;
+}
+
+#icono {
+    width: 30px; /* Asegura que ocupe todo el ancho del contenedor */
+    grid-area: exit;
+}
+
+.principal {
+    color: black;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    background-color: #313131;
+    grid-template-rows: 10% 90%;
+    grid-template-areas: 
+        "generador"
+        "codigos";
+}
+
+.generador {
+    color: #64c4fc;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    grid-area: generador;
+    background-color: #313131;
+    justify-content: space-between; /* Distribuye el texto y el ícono */
+    align-items: center; /* Alinea verticalmente */
+    padding: 0 10px; /* Añade un poco de padding para que no esté pegado a los bordes */
+}
+
+.codigos {
+    grid-area: codigos;
+}
+
+.gen {
+    margin: 0; /* Elimina el margen por defecto del h1 */
+}
+
+#agregar {
+    font-size: 200%; /* Ajusta el tamaño del ícono si es necesario */
+}
+
