@@ -37,16 +37,15 @@ export class ContactPage {
   }
 
   share() {
-    console.log('Compartir página');
+    console.log('Compartir información de contacto');
     if (navigator.share) {
       navigator.share({
-        title: 'Fracx - Control de Acceso',
-        text: 'Conoce las soluciones innovadoras de Fracx para control de acceso',
-        url: window.location.href,
+        title: 'Fracx - Contáctanos',
+        text: 'Para más información sobre nuestros servicios, contáctanos en nuestras redes sociales: \n📌 Facebook: https://www.facebook.com/profile.php?id=61574577937867\n🐦 Twitter: https://x.com/_Frac_X\n📷 Instagram: https://www.instagram.com/_frac_x/\n📺 YouTube: https://www.youtube.com/@Frac_X'
       }).catch(error => console.log('Error al compartir', error));
     }
   }
-
+  
   sendMessage() {
     // Skip reCAPTCHA verification since it's disabled
     if (!this.contactForm.valid) {
