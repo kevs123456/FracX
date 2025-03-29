@@ -28,26 +28,33 @@ export class LoginPage {
 
   // Método para hacer login
   login() {
-    this.apiService.login(this.usuario, this.password).subscribe(
-      (response) => {
+    this.apiService.login(this.usuario, this.password).subscribe({
+      next: (response) => {
         if (response.success) {
-          localStorage.setItem('userId', response.id); // Guardar ID
-          localStorage.setItem('nombreUsuario', response.usuario); // Guardar nombre
+          localStorage.setItem('userId', response.id);
+          localStorage.setItem('nombreUsuario', response.usuario);
   
-          // Redirige según el rol del usuario
           if (response.rol === 'admin') {
             this.router.navigate(['/admin']);
           } else if (response.rol === 'user') {
             this.router.navigate(['/usuario']);
           }
         } else {
-          this.mostrarAlerta('Error', response.message);
+          // Mensaje específico del backend para credenciales incorrectas
+          this.mostrarAlerta('Error de acceso', response.message || 'Credenciales incorrectas');
         }
       },
-      (error) => {
-        this.mostrarAlerta('Error', 'No se pudo conectar al servidor');
+      error: (error) => {
+        // Manejo diferenciado de errores HTTP
+        if (error.status === 0 || error.status === 500) {
+          this.mostrarAlerta('Error de servidor', 'No se pudo conectar al servidor. Intente más tarde.');
+        } else if (error.status === 401) {
+          this.mostrarAlerta('Acceso denegado', 'Usuario o contraseña incorrectos');
+        } else {
+          this.mostrarAlerta('Error', error.message || 'Ocurrió un error inesperado');
+        }
       }
-    );
+    });
   }
   
 
