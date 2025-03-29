@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://192.168.18.211:3000'; // Usa la IP del servidor
-  private apiUrl2 = 'http://192.168.18.211:3001'; // Asegúrate de que la IP es accesible desde tu app
+  private apiUrl = 'http://192.168.1.200:3000'; // Usa la IP del servidor
+  private apiUrl2 = 'http://192.168.1.200:3001'; // Asegúrate de que la IP es accesible desde tu app
 
   constructor(private http: HttpClient) {}
 
@@ -45,9 +45,9 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/modificarEstado`, { estado });
   }
 
-  agregarCodigo(userId: string, codigo: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/codigos/agregar`, { userId, codigo });
-  }
+  agregarCodigo(userId: string, codigo: string, propietario: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/codigos/agregar`, { userId, codigo, propietario });
+}
 
   // Método para obtener los códigos de un usuario
   obtenerCodigos(userId: string): Observable<any> {
@@ -67,11 +67,11 @@ export class ApiService {
   }
 
   registrarTarjeta(id: string, propietario: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/tarjetas/registrar`, { id, propietario });
+    return this.http.post(`${this.apiUrl2}/tarjetas/registrar`, { id, propietario });
   }
 
   obtenerRegistrosEntrada(): Observable<any> {
-      return this.http.get(`${this.apiUrl}/registros/entrada`);
+      return this.http.get(`${this.apiUrl}/registros/entradas`);
     }
   
   obtenerRegistrosSalida(): Observable<any> {

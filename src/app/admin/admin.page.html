@@ -2,24 +2,36 @@
   <ion-toolbar>
     <div class="header">
       <div class="titulo">
-        <ion-title> <ion-icon name="cog" class="cog"></ion-icon> Panel de administrador</ion-title>
+        <ion-title> <ion-icon name="cog" ion-hide="xs" class="cog"></ion-icon> Panel de administrador</ion-title>
       </div>
       <div class="control">
         <div class="botones">
-          <ion-button class="btn-abrir" expand="full" (click)="abrirPorton()">Abrir Portón</ion-button>
+          <ion-button fill="clear" class="btn-abrir" (click)="abrirPorton()">Abrir Portón</ion-button>
           <ion-button fill="clear" class="exit" (click)="logout()"><ion-img id="icono" src="../../assets/icon/exit.png"></ion-img></ion-button>
         </div>
       </div>
     </div>
+    <!-- Botón para abrir el menú en móviles -->
+    <ion-menu-button slot="end" class="mobile-menu"></ion-menu-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+    <!-- Menú lateral que aparecerá en móvil -->
+    <ion-menu contentId="main-content">
+      <ion-toolbar><ion-title>Herramientas del administrador:</ion-title></ion-toolbar>
+      <ion-content>
+            <ion-button fill="clear" class="btn-abrir" (click)="abrirPorton()">Abrir Portón</ion-button>
+            <br><ion-button fill="clear" class="exit" (click)="logout()"><ion-img id="icono" src="../../assets/icon/exit.png"></ion-img></ion-button>
+      </ion-content>
+    </ion-menu>
+
+<ion-content id="main-content">
+
   <div class="principal">
     <!-- Sección de Añadir Usuario -->
     <div class="usuarios">
       <h2 class="titulo-con-icono">Añadir usuario <ion-icon name="person-add" class="iconos-registros"></ion-icon></h2>
-        <ion-input label="Usuario" label-placement="floating" fill="outline" type="text" [(ngModel)]="nuevoUsuario" placeholder="Ingrese el usuario a registrar (Nombre-numero de casa)" ></ion-input>
+        <ion-input label="Usuario" label-placement="floating" fill="outline" type="text" [(ngModel)]="nuevoUsuario" placeholder="Ingresar usuario" ></ion-input>
         <ion-input label="Contraseña" label-placement="floating" fill="outline" [(ngModel)]="nuevaPassword" placeholder="Ingrese la contraseña"></ion-input>
         <ion-button id="btnInicio" expand="full" (click)="crearUsuario()">Registrar usuario</ion-button>
     </div>
@@ -62,26 +74,46 @@
   </div>
 
   <!-- Sección de Registros -->
-  <div class="registros">
-    <div class="reg-entrada">Entrada
-      <div>
-        <ion-list>
-          <ion-item *ngFor="let registro of registrosEntrada">
-            <ion-label>{{ registro.usuario }} - {{ registro.hora }} - {{ registro.metodo }}</ion-label>
-          </ion-item>
-        </ion-list>
-      </div>
-    </div>
-    <div class="reg-salida">Salida
-      <div>
-        <ion-list>
-          <ion-item *ngFor="let registro of registrosSalida">
-            <ion-label>{{ registro.usuario }} - {{ registro.hora }} - {{ registro.estadoPorton }}</ion-label>
-          </ion-item>
-        </ion-list>
-      </div>
+<!-- Sección de Registros -->
+<div class="registros">
+  <!-- Registros de Entrada -->
+  <div class="reg-entrada">
+    <h2>Entrada</h2>
+    <div>
+      <ion-grid>
+        <ion-row id="row-header">
+          <ion-col>Usuario</ion-col>
+          <ion-col>Método</ion-col>
+          <ion-col>Hora</ion-col>
+        </ion-row>
+
+        <ion-row *ngFor="let registro of registrosEntrada">
+          <ion-col>{{ registro.usuario }}</ion-col>
+          <ion-col>{{ registro.metodo }}</ion-col>
+          <ion-col>{{ registro.hora }}</ion-col>
+        </ion-row>
+      </ion-grid>
+      
     </div>
   </div>
+
+  <!-- Registros de Salida -->
+  <div class="reg-salida">
+    <h2>Salida</h2>
+    <div>
+      <ion-grid>
+        <ion-row id="row-header">
+          <ion-col>Hora</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let registro of registrosSalida">
+          <ion-col>
+            {{ registro.hora }}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</div>
 <div class="lista-usuarios">
   <h2>Lista de usuarios</h2>
   <ion-list>
@@ -94,19 +126,15 @@
 
   <!-- Formulario de edición -->
   <div *ngIf="editandoUsuario">
-    <h2>Editar Usuario</h2>
+    <h2>Editar usuario</h2>
     <ion-item>
-      <ion-label position="floating">Usuario</ion-label>
-      <ion-input [(ngModel)]="editandoUsuario.usuario"></ion-input>
+      <ion-input label="Usuario" label-placement="floating" fill="outline" type="text" [(ngModel)]="editandoUsuario.usuario" placeholder="Ingrese el usuario a registrar (Nombre-numero de casa)" ></ion-input>
+      <ion-input label="Contraseña" label-placement="floating" fill="outline" type="password"[(ngModel)]="editandoUsuario.password" placeholder="Ingrese nueva contraseña" ></ion-input>
     </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Nueva contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="editandoUsuario.password"></ion-input>
-    </ion-item>
-
-    <ion-button expand="full" (click)="guardarEdicion()" class="btn-guardar">Guardar</ion-button>
-    <ion-button expand="full" color="medium" (click)="editandoUsuario = null">Cancelar</ion-button>
+    <div class="btn-editarU">
+      <ion-button fill="clear" (click)="guardarEdicion()" class="btn-abrir">Guardar</ion-button>
+      <ion-button fill="clear" (click)="editandoUsuario = null"  class="btn-abrir">Cancelar</ion-button>
+    </div>
   </div>
 </div>
 </ion-content>

@@ -35,6 +35,7 @@ export class AdminPage implements OnInit {
 
   ngOnInit() {
     this.cargarUsuarios();
+    this.cargarRegistros(); 
   }
 
   cargarUsuarios() {
@@ -176,22 +177,44 @@ export class AdminPage implements OnInit {
   }
 
   cargarRegistros() {
+    console.log('Cargando registros...');
+  
+    // Cargar registros de entrada (sin cambios)
     this.apiService.obtenerRegistrosEntrada().subscribe(
       (response) => {
-        this.registrosEntrada = response;
+        console.log('Registros de entrada:', response);
+        const registros = Array.isArray(response) ? response : response.data;
+        registros.sort((a: any, b: any) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime());
+        this.registrosEntrada = registros.slice(0, 5);
       },
       (error) => {
         console.error('Error al cargar registros de entrada', error);
       }
     );
-
+  
+    // Cargar registros de salida
     this.apiService.obtenerRegistrosSalida().subscribe(
       (response) => {
-        this.registrosSalida = response;
+        console.log('Registros de salida:', response);
+        const registros = Array.isArray(response.data) ? response.data : []; // Accede a response.data
+        // Ordena los registros por fecha (si no están ordenados)
+        registros.sort((a: any, b: any) => new Date(b.fecha_hora).getTime() - new Date(a.fecha_hora).getTime());
+        // Extrae solo la hora de cada registro
+        this.registrosSalida = registros.slice(0, 5).map((registro: any) => {
+          return {
+            hora: this.extraerHora(registro.fecha_hora) // Extrae solo la hora
+          };
+        });
       },
       (error) => {
         console.error('Error al cargar registros de salida', error);
       }
     );
+  }
+  
+  // Función para extraer la hora de una fecha y hora completa
+  extraerHora(fechaHora: string): string {
+    const fecha = new Date(fechaHora);
+    return fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   }
 }

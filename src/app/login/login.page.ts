@@ -22,6 +22,10 @@ export class LoginPage {
     private alertController: AlertController // Inyecta el controlador de alertas
   ) {}
 
+  goToContact() {
+    this.router.navigate(['/contact']);
+  }
+
   // Método para hacer login
   login() {
     this.apiService.login(this.usuario, this.password).subscribe(
