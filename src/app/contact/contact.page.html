@@ -189,57 +189,81 @@
     </ion-card-content>
   </ion-card>
 
-  <!-- Formulario de Contacto mejorado -->
-  <ion-card class="contact-card">
-    <ion-card-header>
-      <ion-card-title>Contáctanos</ion-card-title>
-      <ion-card-subtitle>¿Tienes dudas? Escríbenos</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content>
-      <form #contactForm="ngForm" (ngSubmit)="sendMessage()">
-        <ion-item>
-          <ion-label position="floating">Nombre completo</ion-label>
-          <ion-input [(ngModel)]="name" name="name" required></ion-input>
-        </ion-item>
+<!-- Formulario de Contacto - Estilo login pero tamaño original -->
+<ion-card class="contact-card">
+  <ion-card-header>
+    <ion-card-title>Contáctanos</ion-card-title>
+    <ion-card-subtitle>¿Tienes dudas? Escríbenos</ion-card-subtitle>
+  </ion-card-header>
+  
+  <ion-card-content>
+    <form #contactForm="ngForm" (ngSubmit)="sendMessage()">
+      <ion-input 
+        label="Nombre completo" 
+        label-placement="floating" 
+        fill="outline" 
+        placeholder="Ingresa tu nombre"
+        [(ngModel)]="name" 
+        name="name" 
+        required
+        class="custom-input">
+      </ion-input>
 
-        <ion-item>
-          <ion-label position="floating">Correo electrónico</ion-label>
-          <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
-        </ion-item>
-        
-        <ion-item>
-          <ion-label position="floating">Teléfono (opcional)</ion-label>
-          <ion-input [(ngModel)]="phone" name="phone" type="tel"></ion-input>
-        </ion-item>
+      <ion-input 
+        label="Correo electrónico" 
+        label-placement="floating" 
+        fill="outline" 
+        placeholder="Ingresa tu correo"
+        type="email"
+        [(ngModel)]="email" 
+        name="email" 
+        required
+        class="custom-input">
+      </ion-input>
+      
+      <ion-input 
+        label="Teléfono (opcional)" 
+        label-placement="floating" 
+        fill="outline" 
+        placeholder="Ingresa tu teléfono"
+        type="tel"
+        [(ngModel)]="phone" 
+        name="phone"
+        class="custom-input">
+      </ion-input>
 
-        <ion-item>
-          <ion-label position="floating">Mensaje</ion-label>
-          <ion-textarea [(ngModel)]="message" name="message" required rows="5"></ion-textarea>
-        </ion-item>
+      <ion-textarea 
+        label="Mensaje" 
+        label-placement="floating" 
+        fill="outline" 
+        placeholder="Escribe tu mensaje"
+        rows="5"
+        [(ngModel)]="message" 
+        name="message" 
+        required
+        class="custom-input">
+      </ion-textarea>
 
-        <div class="recaptcha-container">
-          <div id="recaptcha-container" style="min-width: 304px; min-height: 78px;"></div>
-                    <ion-note *ngIf="!recaptchaVerified && contactForm.submitted" color="danger">
-            Por favor, completa el reCAPTCHA
-          </ion-note>
-        </div>
-
-        <ion-button type="submit" expand="block" shape="round" [disabled]="contactForm.invalid">
-          <ion-icon name="send" slot="start"></ion-icon>
-          Enviar mensaje
-        </ion-button>
-      </form>
-
-      <!-- Mensajes de retroalimentación -->
-      <div class="feedback-messages">
-        <ion-text color="success" *ngIf="successMessage">
-          <p>{{ successMessage }}</p>
-        </ion-text>
-
-        <ion-text color="danger" *ngIf="errorMessage">
-          <p>{{ errorMessage }}</p>
-        </ion-text>
+      <div class="recaptcha-container">
+        <div id="recaptcha-container" style="min-width: 304px; min-height: 78px;"></div>
+        <ion-note *ngIf="!recaptchaVerified && contactForm.submitted" color="danger">
+          Por favor, completa el reCAPTCHA
+        </ion-note>
       </div>
-    </ion-card-content>
-  </ion-card>
-</ion-content>
+
+      <ion-button type="submit" expand="block" class="custom-button" [disabled]="contactForm.invalid">
+        <ion-icon name="send" slot="start"></ion-icon>
+        Enviar mensaje
+      </ion-button>
+    </form>
+
+    <div class="feedback-messages">
+      <ion-text color="success" *ngIf="successMessage">
+        <p>{{ successMessage }}</p>
+      </ion-text>
+      <ion-text color="danger" *ngIf="errorMessage">
+        <p>{{ errorMessage }}</p>
+      </ion-text>
+    </div>
+  </ion-card-content>
+</ion-card>
