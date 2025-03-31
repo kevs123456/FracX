@@ -47,7 +47,6 @@ export class ContactPage {
     const shareData = {
       title: 'Fracx - Contáctanos',
       text: 'Para más información sobre nuestros servicios, contáctanos en nuestras redes sociales: \n📌 Facebook: https://www.facebook.com/profile.php?id=61574577937867\n🐦 Twitter: https://x.com/_Frac_X\n📷 Instagram: https://www.instagram.com/_frac_x/\n📺 YouTube: https://www.youtube.com/@Frac_X',
-      url: window.location.href
     };
 
     try {
