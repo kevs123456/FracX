@@ -338,7 +338,22 @@ ion-menu {
 .mobile-menu {
     display: none;
   }
-
+/* Estilos para las alertas */
+/* Elimina estilos innecesarios o combina selectores */
+ion-alert.custom-alert {
+    --backdrop-opacity: 0.7;
+    
+    .alert-button-group { padding: 8px; }
+    .alert-title {
+      font-size: 1.2rem;
+      color: var(--ion-color-primary);
+    }
+    .alert-message { font-size: 1rem; }
+    .alert-button {
+      &.danger { color: var(--ion-color-danger); }
+      &.secondary { color: var(--ion-color-medium); }
+    }
+  }
 @media (max-width: 800px) {
     
     .control {

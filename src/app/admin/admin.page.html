@@ -128,7 +128,7 @@
   <div *ngIf="editandoUsuario">
     <h2>Editar usuario</h2>
     <ion-item>
-      <ion-input label="Usuario" label-placement="floating" fill="outline" type="text" [(ngModel)]="editandoUsuario.usuario" placeholder="Ingrese el usuario a registrar (Nombre-numero de casa)" ></ion-input>
+      <ion-input label="Usuario" label-placement="floating" fill="outline" type="text" [(ngModel)]="editandoUsuario.usuario" placeholder="Ingrese el usuario a registrar (Nombre-numero de casa)" disabled ></ion-input>
       <ion-input label="Contraseña" label-placement="floating" fill="outline" type="password"[(ngModel)]="editandoUsuario.password" placeholder="Ingrese nueva contraseña" ></ion-input>
     </ion-item>
     <div class="btn-editarU">
